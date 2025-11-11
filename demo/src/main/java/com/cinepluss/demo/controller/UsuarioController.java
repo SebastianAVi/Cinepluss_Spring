@@ -17,7 +17,7 @@ public class UsuarioController {
     
     @operation(summary = "Listas Usuarios")
     @ApiResponses({
-        @@ApiResponses(responseCode = "200". descripcion = "ok",
+        @@ApiResponses(responseCode = "200". descripcion = "ok"),
         content = @content(Array = @ArraySchema(schema = @schema(implemetatiom = Usuario.class)))
     })
 
