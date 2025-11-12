@@ -31,4 +31,5 @@ public class entrada {
     @Column(nullable = false)
     private int edad;
 
+    
 }

@@ -23,4 +23,5 @@ public class suscripcion {
     @Column(nullable = false)
     private String tipo_suscripcion;
 
+    
 }
