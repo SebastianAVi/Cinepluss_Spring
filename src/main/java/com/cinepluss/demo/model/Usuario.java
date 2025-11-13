@@ -7,10 +7,9 @@ import lombok.Data;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "entrada")
+@Table(name = "usuario")
 @Data
-public class entrada {
-
+public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -31,5 +30,4 @@ public class entrada {
     @Column(nullable = false)
     private int edad;
 
-    
 }

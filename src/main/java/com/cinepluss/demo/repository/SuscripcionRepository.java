@@ -1,5 +1,5 @@
 package com.cinepluss.demo.repository;
 
-public class SubscripcionRepository {
+public class SuscripcionRepository {
 
 }
