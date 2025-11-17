@@ -1,5 +1,8 @@
 package com.cinepluss.demo.repository;
 
-public class LicenciaRepository {
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface LicenciaRepository {
 
 }

@@ -3,7 +3,7 @@ package com.cinepluss.demo.controller;
 import com.cinepluss.demo.model.Entrada;
 
 @RestController
-@RequestMapping("/api/entrada")
+@RequestMapping("/api/v1/entrada")
 public class EntradaController {
 
     private final EntradaService service;

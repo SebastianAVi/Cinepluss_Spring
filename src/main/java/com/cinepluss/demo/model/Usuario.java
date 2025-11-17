@@ -1,10 +1,9 @@
 package com.cinepluss.demo.model;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
-import java.math.BigDecimal;
 
 @Entity
 @Table(name = "usuario")
@@ -18,13 +17,16 @@ public class Usuario {
     @Column(nullable = false)
     private String nombre_usuario;
 
-    @NotBlank(message = "apellido invalido")
     @Column(nullable = false)
     private String ap_usuario;
 
-    @NotBlank(message = "apellido invalido")
+    @NotBlank(message = "email invalido")
+    @Column(nullable = false, unique = true)
+    private String email;
+
+    @NotBlank(message = "contraseña invalida")
     @Column(nullable = false)
-    private String am_usuario;
+    private String contraseña;
 
     @NotBlank(message = "edad invalida")
     @Column(nullable = false)

@@ -29,4 +29,3 @@ public class GlobalExceptionHandler {
         return ResponseEntity.badRequest().body(Map.of("errors", ex.getMessage()));
     }
 }
-

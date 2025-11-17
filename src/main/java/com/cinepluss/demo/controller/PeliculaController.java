@@ -2,9 +2,21 @@ package com.cinepluss.demo.controller;
 
 import com.cinepluss.demo.model.Pelicula;
 import com.cinepluss.demo.service.PeliculaService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.ArraySchema;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
-@RequestMapping("/api/peliculas")
+@RequestMapping("/api/v1/peliculas")
 public class PeliculaController {
 
     private final PeliculaService service;
@@ -13,10 +25,10 @@ public class PeliculaController {
         this.service = service;
     }
 
-    @Operation(summary = "Listar Peliculas", descripcion = "Devuelve todas las peliculas")
+    @Operation(summary = "Listar Peliculas", description = "Devuelve todas las peliculas")
     @ApiResponses({
-        @ApiResponse(responseCode = "200", descripcion = "OK",
-        content = @Content(array = @ArraySchema(schema = @Schema(implemetation = Pelicula.class))))
+        @ApiResponse(responseCode = "200", description = "OK",
+        content = @Content(array = @ArraySchema(schema = @Schema(implementation = Pelicula.class))))
     })
 
     @GetMapping
@@ -26,8 +38,8 @@ public class PeliculaController {
 
     @Operation(summary = "Obtener por id")
     @ApiResponses({
-        @ApiResponse(responseCode = "200", descripcion = "Peliculas Encontradas"),
-        @ApiResponse(responseCode = "400", descripcion = "No Encontradas")
+        @ApiResponse(responseCode = "200", description = "Peliculas Encontradas"),
+        @ApiResponse(responseCode = "400", description = "No Encontradas")
     })
 
     @GetMapping("/id")
@@ -42,7 +54,7 @@ public class PeliculaController {
     }
 
     @Operation(summary = "Crear Pelicula")
-    @ApiResponse(responseCode = "201", descripcion = "Creada")
+    @ApiResponse(responseCode = "201", description = "Creada")
     @PostMapping
     public ResponseEntity<Pelicula> crearPelicula(@Valid @RequestBody Pelicula pelicula) {
         Pelicula creada = service.crear(pelicula);
@@ -56,7 +68,7 @@ public class PeliculaController {
     }
 
     @Operation(summary = "Eliminar Pelicula")
-    @ApiResponse(responseCode = "204", descripcion = "Eliminada")
+    @ApiResponse(responseCode = "204", description = "Eliminada")
     @DeleteMapping("/id")
     public ResponseEntity<Void> eliminar(@PathVariable Long id) {
         service.eliminar(id);
