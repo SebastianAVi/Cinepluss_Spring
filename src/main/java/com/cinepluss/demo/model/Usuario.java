@@ -17,7 +17,7 @@ public class Usuario {
     @Column(nullable = false)
     private String nombre_usuario;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private String ap_usuario;
 
     @NotBlank(message = "email invalido")
@@ -32,4 +32,7 @@ public class Usuario {
     @Column(nullable = false)
     private int edad;
 
+    @NotBlank(message = "rol invalido")
+    @Column(nullable = false)
+    private String rol;
 }
