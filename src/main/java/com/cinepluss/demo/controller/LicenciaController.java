@@ -1,6 +1,16 @@
 package com.cinepluss.demo.controller;
 
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 import com.cinepluss.demo.model.Licencia;
+import com.cinepluss.demo.service.LicenciaService;
+
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 
 @RestController
 @RequestMapping("/id/licencia")
@@ -14,8 +24,8 @@ public class LicenciaController {
 
     @Operation(summary = "Obtener Licencia por id")
     @ApiResponses({
-        @ApiResponse(responseCode = "200", descripcion = "Licencia Encontrada"),
-        @ApiResponse(responseCode = "400", descripcion = "Licencia No Encontrada")
+        @ApiResponse(responseCode = "200", description = "Licencia Encontrada"),
+        @ApiResponse(responseCode = "400", description = "Licencia No Encontrada")
     })
 
     @GetMapping("/id")

@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.Data;
 
-import java.math.BigDecimal;
 
 @Entity
 @Table(name = "licencia")
@@ -14,5 +13,8 @@ public class Licencia {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @NotBlank(message="El tipo de Licencia es Obligatorio")
+    private String licencia;
 
 }

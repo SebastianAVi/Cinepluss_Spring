@@ -2,7 +2,7 @@ package com.cinepluss.demo.service.impl;
 
 import com.cinepluss.demo.exception.NotFoundException;
 import com.cinepluss.demo.model.Pelicula;
-import com.proferoberto.biblioteca.repository.PeliculaRepository;
+import com.cinepluss.demo.repository.PeliculaRepository;
 import com.cinepluss.demo.service.PeliculaService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

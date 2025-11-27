@@ -18,4 +18,10 @@ public class Pelicula {
     @Column(nullable = false)
     private String titulo;
 
+    @NotBlank(message = "La sinopsis es obligatoria")
+    @Column(nullable = false)
+    private String sinopsis;
+
+    private String imagen;
+
 }

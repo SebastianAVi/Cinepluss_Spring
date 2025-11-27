@@ -1,6 +1,7 @@
 package com.cinepluss.demo.controller;
 
 import com.cinepluss.demo.model.Suscripcion;
+import com.cinepluss.demo.service.SuscripcionService;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
@@ -24,8 +25,8 @@ public class SuscripcionController {
 
     @Operation(summary = "Obtener suscripciones por id")
     @ApiResponses({
-        @ApiResponse(responseCode = "200", descripcion = "Suscripcion Encontrada"),
-        @ApiResponse(responseCode = "400", descripcion = "No Encontrada")
+        @ApiResponse(responseCode = "200", description = "Suscripcion Encontrada"),
+        @ApiResponse(responseCode = "400", description = "No Encontrada")
     })
 
     @GetMapping("/id")
