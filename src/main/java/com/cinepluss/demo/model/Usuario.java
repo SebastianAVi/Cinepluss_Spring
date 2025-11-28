@@ -32,7 +32,7 @@ public class Usuario {
     @Column(nullable = false)
     private int edad;
 
-    @NotBlank(message = "rol invalido")
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private String rol;
+    private Role role;
 }
