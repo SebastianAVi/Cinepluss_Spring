@@ -2,12 +2,20 @@ package com.cinepluss.demo.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
-import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 
 @Entity
 @Table(name = "usuario")
-@Data
+@Getter
+@Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,10 +23,10 @@ public class Usuario {
 
     @NotBlank(message = "nombre invalido")
     @Column(nullable = false)
-    private String nombre_usuario;
+    private String nombre;
 
-    @Column(nullable = true)
-    private String ap_usuario;
+    @Column(nullable = false)
+    private String apUsuario;
 
     @NotBlank(message = "email invalido")
     @Column(nullable = false, unique = true)
@@ -28,7 +36,6 @@ public class Usuario {
     @Column(nullable = false)
     private String contraseña;
 
-    @NotBlank(message = "edad invalida")
     @Column(nullable = false)
     private int edad;
 

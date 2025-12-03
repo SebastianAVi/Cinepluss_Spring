@@ -1,36 +1,43 @@
 package com.cinepluss.demo.config;
 
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.security.crypto.password.PasswordEncoder;
-
 import com.cinepluss.demo.model.Role;
 import com.cinepluss.demo.model.Usuario;
 import com.cinepluss.demo.repository.UsuarioRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
-public class DataInitConfig {
-    
-    @Bean
-    CommandLineRunner initUsers(UsuarioRepository usuarioRepository,
-                                PasswordEncoder passwordEncoder) {
-        return args -> {
-            if (usuarioRepository.count() == 0) {
-                Usuario admin = Usuario.builder()
-                    .nombre_usuario("admin")
+@RequiredArgsConstructor
+public class DataInitConfig implements CommandLineRunner {
+
+    private final UsuarioRepository usuarioRepository;
+    private final PasswordEncoder passwordEncoder;
+
+    @Override
+    public void run(String... args) {
+        if (usuarioRepository.count() == 0) {
+            Usuario admin = Usuario.builder()
+                    .nombre("Administrador")
+                    .apUsuario("Sistema")
+                    .email("admin@cineplus.cl")          // <- email válido
                     .contraseña(passwordEncoder.encode("admin123"))
+                    .edad(30)                            // <- edad válida
                     .role(Role.ROLE_ADMIN)
                     .build();
-                usuarioRepository.save(admin);
 
-                Usuario user = Usuario.builder()
-                    .nombre_usuario("user")
+            Usuario user = Usuario.builder()
+                    .nombre("Usuario")
+                    .apUsuario("Demo")
+                    .email("user@cineplus.cl")           // <- email válido
                     .contraseña(passwordEncoder.encode("user123"))
+                    .edad(25)                            // <- edad válida
                     .role(Role.ROLE_USER)
                     .build();
-                usuarioRepository.save(user);
-            }
-        };
+
+            usuarioRepository.save(admin);
+            usuarioRepository.save(user);
+        }
     }
 }

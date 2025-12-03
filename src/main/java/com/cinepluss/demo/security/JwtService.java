@@ -5,13 +5,13 @@ import java.util.Date;
 import java.util.Map;
 import java.util.function.Function;
 
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.*;
+import io.jsonwebtoken.security.Keys;
 
 @Service
 public class JwtService {
@@ -21,7 +21,7 @@ public class JwtService {
     public JwtService(
         @Value("${app.security.jwt.secret}") String secret,
         @Value("${app.security.jwt.expiration-ms}") long expirationMs) {
-       this.signingKey = Key.hmacShaKeyFor(secret.getBytes());
+       this.signingKey = Keys.hmacShaKeyFor(secret.getBytes());
        this.expirationMs = expirationMs;
     }
 

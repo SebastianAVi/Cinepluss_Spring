@@ -15,11 +15,11 @@ public class Suscripcion {
 
     @NotBlank(message = "Monto de suscripcion invalido")
     @Column(nullable = false)
-    private int valor_suscripcion;
+    private int valorSuscripcion;
 
     @NotBlank(message = "tipo de suscripcion invalido")
     @Column(nullable = false)
-    private String tipo_suscripcion;
+    private String tipoSuscripcion;
 
     
 }

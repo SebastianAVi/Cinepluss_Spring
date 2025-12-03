@@ -6,10 +6,13 @@ import com.cinepluss.demo.service.UsuarioService;
 
 import jakarta.persistence.EntityNotFoundException;
 
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+@Service
+@Transactional
 public class UsuarioServiceImpl implements UsuarioService{
     
     // Importacion del Repositorio de la Entidad Usuario
@@ -46,7 +49,7 @@ public class UsuarioServiceImpl implements UsuarioService{
     public Usuario actualizar(Long id, Usuario usuario) {
         Usuario existente = buscarPorId(id);
 
-        existente.setNombre_usuario(usuario.getNombre_usuario());
+        existente.setNombre(usuario.getNombre());
         existente.setEmail(usuario.getEmail());
         existente.setEdad(usuario.getEdad());
 

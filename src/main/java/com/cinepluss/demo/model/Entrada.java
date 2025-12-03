@@ -13,8 +13,12 @@ public class Entrada {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "Se requiere de un codigo de entrada valido")
+    @Column
+    private String codigo;
+
     @NotBlank(message = "Se requiere un valor de la entrada valido")
     @Column(nullable = false)
-    private int valor_entrada;
+    private int valorEntrada;
 
 }
