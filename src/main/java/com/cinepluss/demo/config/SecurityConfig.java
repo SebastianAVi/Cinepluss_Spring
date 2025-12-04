@@ -42,10 +42,17 @@ public class SecurityConfig {
         .authorizeHttpRequests(auth -> auth
             .requestMatchers(
                 "/api/v1/auth/**",
+                "/api/v1/usuario/**",
+
+                // Swagger
                 "/v3/api-docs/**",
-                "/swagger-ui.html",
-                "/swagger-ui/**",
+                "/doc/swagger-ui.html",
                 "/doc/swagger-ui/**",
+                "/doc/swagger-ui/index.html",
+                "/swagger-resources/**",
+                "/webjars/**",
+
+                // H2
                 "/h2-console/**"
             ).permitAll()
             .anyRequest().authenticated()
@@ -70,7 +77,7 @@ public class SecurityConfig {
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
 
-        config.setAllowedOriginPatterns(List.of("http://localhost:8080"));
+        config.setAllowedOriginPatterns(List.of("http://localhost:8080", "http://localhost:3000", "http://localhost:5000"));
 
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         config.setAllowedHeaders(List.of("Authorization", "Content-Type"));
