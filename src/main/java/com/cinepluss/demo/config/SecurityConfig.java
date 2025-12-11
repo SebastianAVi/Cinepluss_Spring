@@ -43,6 +43,9 @@ public class SecurityConfig {
             .requestMatchers(
                 "/api/v1/auth/**",
                 "/api/v1/usuario/**",
+                "/api/v1/auth/login",
+                "/api/v1/auth/register",
+                "/api/v1/peliculas/**",  //para permitir acceso a peliculas
 
                 // Swagger
                 "/v3/api-docs/**",
@@ -77,11 +80,11 @@ public class SecurityConfig {
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
 
-        config.setAllowedOriginPatterns(List.of("http://localhost:8080", "http://localhost:3000", "http://localhost:5000"));
-
-        config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
-        config.setAllowedHeaders(List.of("Authorization", "Content-Type"));
         config.setAllowCredentials(true);
+        config.setAllowedOrigins(List.of("http://localhost:3000", "http://localhost:3001"));
+        config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+        config.setAllowedHeaders(List.of("*"));
+        config.setExposedHeaders(List.of("Authorization"));
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", config);

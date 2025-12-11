@@ -25,13 +25,13 @@ public class AuthController {
     public ResponseEntity<AuthResponse> login(@RequestBody AuthRequest request) {
 
         Authentication authentication = new UsernamePasswordAuthenticationToken(
-                request.getUsername(),
+                request.getEmail(),
                 request.getPassword()
         );
         authenticationManager.authenticate(authentication);
 
         UserDetails userDetails =
-                userDetailsService.loadUserByUsername(request.getUsername());
+                userDetailsService.loadUserByUsername(request.getEmail());
 
         String token = jwtService.generateToken(userDetails);
 
