@@ -42,7 +42,7 @@ public class PeliculaController {
         @ApiResponse(responseCode = "400", description = "No Encontradas")
     })
 
-    @GetMapping("/id")
+    @GetMapping("/{id}")
     public Pelicula obPelicula(@PathVariable Long id) {
         return service.buscarPorId(id);
     }
@@ -62,14 +62,14 @@ public class PeliculaController {
     }
 
     @Operation(summary = "Actualizar Pelicula")
-    @PutMapping("/id")
+    @PutMapping("/{id}")
     public Pelicula acPelicula(@PathVariable Long id, @Valid @RequestBody Pelicula pelicula) {
         return service.actualizar(id, pelicula);
     }
 
     @Operation(summary = "Eliminar Pelicula")
     @ApiResponse(responseCode = "204", description = "Eliminada")
-    @DeleteMapping("/id")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> eliminar(@PathVariable Long id) {
         service.eliminar(id);
         return ResponseEntity.noContent().build();

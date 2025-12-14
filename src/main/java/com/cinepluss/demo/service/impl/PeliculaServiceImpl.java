@@ -44,12 +44,18 @@ public class PeliculaServiceImpl implements PeliculaService {
     }
 
     @Override
-    public Pelicula actualizar(Long id, Pelicula Pelicula) {
+    public Pelicula actualizar(Long id, Pelicula pelicula) {
         Pelicula actual = buscarPorId(id);
-        actual.setTitulo(Pelicula.getTitulo());
-        
+
+        actual.setTitulo(pelicula.getTitulo());
+        actual.setCategoria(pelicula.getCategoria());
+        actual.setPrecio(pelicula.getPrecio());
+        actual.setSinopsis(pelicula.getSinopsis());
+        actual.setImagen(pelicula.getImagen());
+
         return repo.save(actual);
     }
+
 
     @Override
     public void eliminar(Long id) {

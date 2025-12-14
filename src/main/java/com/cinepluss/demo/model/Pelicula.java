@@ -18,10 +18,17 @@ public class Pelicula {
     @Column(nullable = false)
     private String titulo;
 
+    @NotBlank(message = "La categoría es obligatoria")
+    @Column(nullable = false)
+    private String categoria;
+
+    @Positive(message = "El precio debe ser un número positivo")
+    @Column(nullable = false)
+    private Integer precio;
+
     @NotBlank(message = "La sinopsis es obligatoria")
     @Column(nullable = false)
     private String sinopsis;
 
     private String imagen;
-
 }
